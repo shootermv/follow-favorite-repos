@@ -29,7 +29,7 @@ export default function HomePage() {
           ))}
         </select>
         repo?
-        <Link to="/guys">Cool guys your following</Link>
+        <Link to="/guys">guys im following</Link>
       </h1>
       <Tabs>
         {tabs.map(({tabName}) => (<Tab key={tabName}>{tabName}</Tab>))}
