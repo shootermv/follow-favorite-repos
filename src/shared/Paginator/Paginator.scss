@@ -1,0 +1,46 @@
+.paginator-wrap {
+    display: grid;
+    padding-right: 20px;
+    justify-items: center;
+    .paginator {
+        align-self: start;
+        font-family: book;
+        max-width: 450px;
+        display: grid;
+        grid-gap: 4px;
+        grid-auto-flow: column;
+        .page-buttons-list {
+            display: grid;
+            grid-gap: 4px;
+            grid-auto-flow: column;
+        }
+        .page-of-total {  
+          display: grid;
+          align-items: center;
+        }
+        button { 
+          font-weight: bold;
+          color: #3e3e3e;  
+          cursor: pointer;
+          border: none;
+          outline: none;  
+          width: 30px;
+          height: 30px;  
+          background: #ebebeb;  
+          &.current{
+            color: #fff;
+            background: #2bbfdf;
+          }
+         &[disabled] {
+           color: #c4c4c4;
+         } 
+        }
+    } 
+    @media screen and (max-width: 450px) {
+        .paginator {
+            .page-of-total {
+                display: none;
+            }  
+        }
+    }
+}

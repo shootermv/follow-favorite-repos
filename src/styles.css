@@ -1,0 +1,14 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+body {
+  padding: 0 45px;
+}
+table {
+  margin-bottom: 5px;
+}
+td,
+th {
+  text-align: left;
+}
