@@ -11,7 +11,7 @@ export default function HomePage() {
     { name: "angular", url: "angular/angular", commits: [] },
     { name: "vue", url: "vuejs/vue", commits: [] }
   ];
-  const [selectedRepo, setSelectedRepo] = useState(0);
+  const [selectedRepo, setSelectedRepo] = useState(initialRepos[0]);
   const tabs = [{ tabName: "Commits", component: Commits}, {tabName: "Issues", component: Issues}, {tabName: "Pull Requests", component: Pulls}];
   console.log("home page rendering");
   return (
@@ -19,8 +19,8 @@ export default function HomePage() {
       <h1>
         Whats new at
         <select
-          value={selectedRepo}
-          onChange={(event) => setSelectedRepo(event.target.value)}
+          value={initialRepos.findIndex(r => selectedRepo.name === r.name)}
+          onChange={(event) => setSelectedRepo(initialRepos[event.target.value])}
         >
           {initialRepos.map((repo, idx) => (
             <option key={repo.name} value={idx}>
@@ -35,7 +35,7 @@ export default function HomePage() {
         {tabs.map(({tabName}) => (<Tab key={tabName}>{tabName}</Tab>))}
 
         {tabs.map(({component: My}) => <TabPanel>
-          <My selectedRepo={initialRepos[selectedRepo]}/>
+          <My selectedRepo={selectedRepo}/>
         </TabPanel>)}
       </Tabs>
     </div>
