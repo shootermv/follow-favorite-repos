@@ -13,6 +13,9 @@ const Pulls = ({ selectedRepo }) => {
       <h2>Pull Requests: {pulls?.length}</h2>
       <PaginatedTable options={{ data: pulls || [], pageSize: 10 }}>
         {({ data: pulls }) => {
+          if (error) {
+            return <>Some error occurred</>;
+          }          
           if (waiting) {
             return <Spinner />;
           }

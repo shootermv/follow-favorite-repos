@@ -14,6 +14,9 @@ const Issues = ({ selectedRepo }) => {
       <h2>issues: {issues?.length}</h2>
       <PaginatedTable options={{ data: issues || [], pageSize: 10 }}>
         {({ data: issues }) => {
+          if (error) {
+            return <>Some error occurred</>;
+          }          
           if (waiting) {
             return <Spinner />;
           }
