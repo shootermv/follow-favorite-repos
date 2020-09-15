@@ -1,3 +1,12 @@
 .user-row img {
-    height: 40px;
+  height: 40px;
+}
+.coolGuysList li {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+.coolGuysList li span {
+  display: inline-block;
+  width: 140px;
 }

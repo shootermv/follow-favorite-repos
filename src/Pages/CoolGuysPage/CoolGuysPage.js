@@ -6,10 +6,11 @@ export default function CoolGuysPage() {
     return (
         <>
           <h1>Cool guys you  following</h1>
-          {users?.length ? <ul>
-              {users.map((user) => (<li key={user.id} className="user-row">
-                 <span><Link to={`/author/${user.login}/${user.email}`}>{user.name}</Link></span>
-                 <img alt="" src={user.avatar_url} />
+          {users?.length ? <ul className="coolGuysList">
+              {users.map(({name, email, login, avatar_url, repo, id}) => (<li key={id} className="user-row">
+                 <span><Link to={`/author/${login}/${email}`}>{name}</Link></span>
+                 <img alt="" src={avatar_url} />
+                 <span>{repo}</span>
                </li>))} 
           </ul> : <>no cool guys yet...</>}
         </>
