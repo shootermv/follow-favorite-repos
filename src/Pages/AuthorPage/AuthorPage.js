@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../shared/Hooks";
 import Spinner from "../../shared/Spinner";
@@ -6,7 +6,7 @@ import Spinner from "../../shared/Spinner";
 import { Link } from "react-router-dom";
 import { RepoContext } from "../../Contexts/RepoContext";
 
-const savePerson = (user, selectedRepo, email) => {
+const savePerson = (user, selectedRepo, email, setAlreadyInList) => {
   const { id, login, avatar_url, name } = user;
   let coolGuys = localStorage.getItem("coolGuys")
     ? JSON.parse(localStorage.getItem("coolGuys"))
@@ -24,11 +24,18 @@ const savePerson = (user, selectedRepo, email) => {
   ];
 
   localStorage.setItem("coolGuys", JSON.stringify(coolGuys));
+  setAlreadyInList(true);
 };
 
 
 export default function AuthorPage() {
   const { authorName, email } = useParams();
+  const [alreadyInList, setAlreadyInList] = useState(false)
+  useEffect(() => {
+    let coolGuys = localStorage.getItem("coolGuys") ? JSON.parse(localStorage.getItem("coolGuys"))
+    : [];
+    setAlreadyInList(coolGuys.find(({email: _email}) => email === _email))
+  }, [])
   const {
     currentRepo: selectedRepo
   } = useContext(RepoContext);
@@ -43,7 +50,7 @@ export default function AuthorPage() {
         <>
           <div className="author-details-left">
             <div>
-              <Link to={"/"}>back</Link> page of <b>{user.name}</b> <button onClick={() => savePerson(user, selectedRepo, email)}>Save This Guy</button>
+              <Link to={"/"}>back</Link> page of <b>{user.name}</b> <button disabled={alreadyInList} onClick={() => savePerson(user, selectedRepo, email, setAlreadyInList)}>Save This Guy</button>
             </div>
             <img alt="" src={user.avatar_url} />
           </div>
@@ -60,8 +67,6 @@ export default function AuthorPage() {
             <div>
               <span>company</span>: <b>{user.company}</b>
             </div>
-
-
           </div>
         </>
       ) : (
