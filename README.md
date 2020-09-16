@@ -13,3 +13,6 @@ I think that one way(among many others) to measure the programmer level - is by 
 * Because for contirbuting to some popular repo you need to learn about project and its contributing-code in depth...  
   
 That is why it may be important to follow the repo you-want-to-contribute closely
+
+# Technologies
+This project built with [React](https://github.com/facebook/react) great library
