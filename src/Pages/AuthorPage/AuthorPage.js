@@ -5,6 +5,28 @@ import Spinner from "../../shared/Spinner";
 
 import { Link } from "react-router-dom";
 import { RepoContext } from "../../Contexts/RepoContext";
+
+const savePerson = (user, selectedRepo, email) => {
+  const { id, login, avatar_url, name } = user;
+  let coolGuys = localStorage.getItem("coolGuys")
+    ? JSON.parse(localStorage.getItem("coolGuys"))
+    : [];
+  coolGuys = [
+    ...coolGuys,
+    {
+      id,
+      login,
+      avatar_url,
+      name,
+      email,
+      repo: selectedRepo.name
+    }
+  ];
+
+  localStorage.setItem("coolGuys", JSON.stringify(coolGuys));
+};
+
+
 export default function AuthorPage() {
   const { authorName, email } = useParams();
   const {
@@ -21,13 +43,7 @@ export default function AuthorPage() {
         <>
           <div className="author-details-left">
             <div>
-              <Link to={"/"}>back</Link> page of <b>{user.name}</b> <button onClick={() => {
-                const {id, login, avatar_url, name} = user;
-                let coolGuys = localStorage.getItem('coolGuys') ? JSON.parse(localStorage.getItem('coolGuys')) : []
-                coolGuys = [...coolGuys, {id, login, avatar_url, name, email, repo: selectedRepo.name}];
- 
-                localStorage.setItem('coolGuys', JSON.stringify(coolGuys)) 
-              }}>Save This Guy</button>
+              <Link to={"/"}>back</Link> page of <b>{user.name}</b> <button onClick={() => savePerson(user, selectedRepo, email)}>Save This Guy</button>
             </div>
             <img alt="" src={user.avatar_url} />
           </div>
