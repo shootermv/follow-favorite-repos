@@ -1,0 +1,14 @@
+header.topBar {
+  background: blue;
+}
+header.topBar nav {
+  padding: 1em;
+  display: flex;
+}
+header.topBar a {
+  color: #fff;
+  padding: 0 0.7em;
+}
+header.topBar a:not(.selected) {
+  text-decoration: none;
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles.css";
+import TopBar from "./Layout/TopBar";
+/* pages */
 import HomePage from "./Pages/HomePage";
 import AuthorPage from "./Pages/AuthorPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,6 +12,7 @@ export default function App() {
   return (
     <RepoContextProvider>
       <Router>
+	    <TopBar />
         <Switch>
           <Route exact path="/">
             <HomePage />
