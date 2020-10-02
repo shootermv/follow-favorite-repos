@@ -36,7 +36,6 @@ export default function HomePage() {
           ))}
         </select>
         repo?
-        <Link to="/guys"> guys im following</Link>
       </h1>
       <Tabs>
         {tabs.map(({ tabName }) => (
