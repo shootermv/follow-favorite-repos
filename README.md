@@ -16,3 +16,9 @@ That is why it may be important to follow the repo you-want-to-contribute closel
 
 # Technologies
 This project built with [React](https://github.com/facebook/react) great library
+
+# Interesting Thing About Demo
+The demo is hosted with free online [codesandbox](https://codesandbox.io) editor  
+Which can use also a free hosting platform for JS apps  
+And also makes you able to build relative compliate apps without install anything
+Thus consider codesandbox - editor of the future  
