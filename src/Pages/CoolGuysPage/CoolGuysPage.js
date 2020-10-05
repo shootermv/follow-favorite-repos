@@ -16,7 +16,7 @@ const removePerson = (id, setUsers) => {
 export default function CoolGuysPage() {
   const [users, setUsers] = useState(localStorage.getItem('coolGuys') ? JSON.parse(localStorage.getItem('coolGuys')) : [])
   return (
-    <>
+    <div className="App">
       <h1>Cool guys you  following</h1>
       {users?.length ? <ul className="coolGuysList">
         {users.map(({ name, email, login, avatar_url, repo, id }) => (<li key={id} className="user-row">
@@ -28,6 +28,6 @@ export default function CoolGuysPage() {
           </button>
         </li>))}
       </ul> : <>no cool guys yet...</>}
-    </>
+    </div>
   )
 }
