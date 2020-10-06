@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+//shared
 import useFetch from "../../shared/Hooks";
 import Spinner from "../../shared/Spinner";
+import "./AuthorPage.css";
 
-import { Link } from "react-router-dom";
 import { RepoContext } from "../../Contexts/RepoContext";
 
 const savePerson = (user, selectedRepo, email, setAlreadyInList) => {
@@ -33,8 +34,8 @@ export default function AuthorPage() {
   const [alreadyInList, setAlreadyInList] = useState(false)
   useEffect(() => {
     let coolGuys = localStorage.getItem("coolGuys") ? JSON.parse(localStorage.getItem("coolGuys"))
-    : [];
-    setAlreadyInList(coolGuys.find(({email: _email}) => email === _email))
+      : [];
+    setAlreadyInList(coolGuys.find(({ email: _email }) => email === _email))
   }, [])
   const {
     currentRepo: selectedRepo
@@ -45,33 +46,36 @@ export default function AuthorPage() {
   return (
     <div className="author-details">
       {loading ? <Spinner />
-      : error ? "error when trying fetch author"
-      : user ? (
-        <>
-          <div className="author-details-left">
-            <div>
-              <Link to={"/"}>back</Link> page of <b>{user.name}</b> <button disabled={alreadyInList} onClick={() => savePerson(user, selectedRepo, email, setAlreadyInList)}>Save This Guy</button>
-            </div>
-            <img alt="" src={user.avatar_url} />
-          </div>
-          <div className="author-details-right">
-            <div>
-              <span>email</span>: <b>{email}</b>
-            </div>
-            <div>
-              <span>followers</span>: <b>{user.followers}</b>
-            </div>
-            <div>
-              <span>location</span>: <b>{user.location}</b>
-            </div>
-            <div>
-              <span>company</span>: <b>{user.company}</b>
-            </div>
-          </div>
-        </>
-      ) : (
-        ""
-      )}
+        : error ? "error when trying fetch author"
+          : user ? (
+            <>
+              <div className="author-details-left">
+                <div>
+                  <b>
+                    <Link to={"/guys"}> Guys </Link>
+                  </b>
+              &#47; <b>{user.name}</b> <button disabled={alreadyInList} onClick={() => savePerson(user, selectedRepo, email, setAlreadyInList)}>Save This Guy</button>
+                </div>
+                <img alt="" src={user.avatar_url} />
+              </div>
+              <div className="author-details-right">
+                <div>
+                  <span>email</span>: <b>{email}</b>
+                </div>
+                <div>
+                  <span>followers</span>: <b>{user.followers}</b>
+                </div>
+                <div>
+                  <span>location</span>: <b>{user.location}</b>
+                </div>
+                <div>
+                  <span>company</span>: <b>{user.company}</b>
+                </div>
+              </div>
+            </>
+          ) : (
+              ""
+            )}
     </div>
   );
 }
