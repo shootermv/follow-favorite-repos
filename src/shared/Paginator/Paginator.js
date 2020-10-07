@@ -1,13 +1,14 @@
-import React from "react";
-import "./Paginator.scss";
-import PaginatorPages from "./PaginatorPages";
+import React from 'react';
+import './Paginator.scss';
+import PaginatorPages from './PaginatorPages';
+import PropTypes from 'prop-types';
 
 const Paginator = ({
   currentPage,
   totalRecords,
   pgSize,
   onPageClick,
-  numOfpageBtndsToDisplay
+  numOfpageBtndsToDisplay,
 }) => {
   if (!totalRecords || totalRecords < pgSize) {
     return null;
@@ -49,6 +50,15 @@ const Paginator = ({
       </button>
     </div>
   );
+};
+
+Paginator.propTypes = {
+  currentPage: PropTypes.number,
+  children: PropTypes.array,
+  pgSize: PropTypes.number,
+  onPageClick: PropTypes.func,
+  numOfpageBtndsToDisplay: PropTypes.number,
+  totalRecords: PropTypes.number,
 };
 
 export default Paginator;

@@ -13,13 +13,30 @@
     "react-scripts": "3.0.1"
   },
   "devDependencies": {
-    "typescript": "3.8.3"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-react-app": "^3.0.8",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "typescript": "3.8.3",
+    "prettier": "^2.1.2",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-prettier": "^1.1.2",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.18.2",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "lint:fix": "eslint . --fix"
   },
   "browserslist": [
     ">0.2%",
