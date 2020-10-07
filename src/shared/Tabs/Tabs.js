@@ -1,6 +1,7 @@
-import React, { useState, Children, isValidElement, cloneElement } from "react";
+import React, { useState, Children, isValidElement, cloneElement } from 'react';
+import './Tabs.css';
+import PropTypes from 'prop-types';
 
-import "./Tabs.css";
 function flat(RR) {
   return RR.reduce((acc, item) => {
     return Array.isArray(item) ? [...acc, ...flat(item)] : [...acc, item];
@@ -8,11 +9,10 @@ function flat(RR) {
 }
 const Tabs = ({ children }) => {
   const [active, setActive] = useState(0);
-  console.log(`ffff:${flat(children)}`)
 
   const panelsWithProps = Children.map(
     flat(children).filter((comp) => {
-      return comp?.type?.name === "TabPanel";
+      return comp?.type?.name === 'TabPanel';
     }),
     (child, tabindex) => {
       const props = { active, tabindex };
@@ -24,7 +24,7 @@ const Tabs = ({ children }) => {
   );
   const titlesWithProps = Children.map(
     flat(children).filter((comp) => {
-      return comp?.type?.name === "Tab";
+      return comp?.type?.name === 'Tab';
     }),
     (child, tabindex) => {
       const props = { active, setActive, tabindex };
@@ -44,6 +44,10 @@ const Tabs = ({ children }) => {
       </main>
     </div>
   );
+};
+
+Tabs.propTypes = {
+  children: PropTypes.array,
 };
 
 export default Tabs;

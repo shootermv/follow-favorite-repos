@@ -1,1 +1,1 @@
-export { default } from "./PaginatedTable";
+export { default } from './PaginatedTable';

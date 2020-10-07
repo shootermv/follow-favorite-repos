@@ -1,21 +1,21 @@
-import React, { useContext } from "react";
-import { Tabs, TabPanel, Tab } from "../../shared/Tabs";
-import Commits from "../../Commits";
-import Issues from "../../Issues";
-import Pulls from "../../Pulls";
+import React, { useContext } from 'react';
+import { Tabs, TabPanel, Tab } from '../../shared/Tabs';
+import Commits from '../../Commits';
+import Issues from '../../Issues';
+import Pulls from '../../Pulls';
 
-import { RepoContext } from "../../Contexts/RepoContext";
+import { RepoContext } from '../../Contexts/RepoContext';
 
 export default function HomePage() {
   const {
     currentRepo: selectedRepo,
     setCurrentRepo: setSelectedRepo,
-    initialRepos
+    initialRepos,
   } = useContext(RepoContext);
   const tabs = [
-    { tabName: "Commits", component: Commits },
-    { tabName: "Issues", component: Issues },
-    { tabName: "Pull Requests", component: Pulls }
+    { tabName: 'Commits', component: Commits },
+    { tabName: 'Issues', component: Issues },
+    { tabName: 'Pull Requests', component: Pulls },
   ];
 
   return (
@@ -41,8 +41,8 @@ export default function HomePage() {
           <Tab key={tabName}>{tabName}</Tab>
         ))}
 
-        {tabs.map(({ component: My }) => (
-          <TabPanel>
+        {tabs.map(({ component: My }, index) => (
+          <TabPanel key={index}>
             <My selectedRepo={selectedRepo} />
           </TabPanel>
         ))}

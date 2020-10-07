@@ -1,6 +1,6 @@
-import React from "react";
-import "./TopBar.css";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import './TopBar.css';
+import { NavLink } from 'react-router-dom';
 export default function TopBar() {
   return (
     <header className="topBar">
