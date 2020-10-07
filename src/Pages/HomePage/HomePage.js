@@ -3,7 +3,6 @@ import { Tabs, TabPanel, Tab } from "../../shared/Tabs";
 import Commits from "../../Commits";
 import Issues from "../../Issues";
 import Pulls from "../../Pulls";
-import { Link } from "react-router-dom";
 
 import { RepoContext } from "../../Contexts/RepoContext";
 
