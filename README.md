@@ -10,8 +10,10 @@ I think that one way(among many others) to measure the programmer level - is by 
 ## Why?
 * Because you actually can see the code he/she wrote not under pressure
 * Because you actually can see he/she knows how to work with git
-* Because for contirbuting to some popular repo you need to learn about project and its contributing-code in depth...  
-  
+* Because for contirbuting to some popular repo you need to learn about project and its contributing-code in depth...
+
+# But How To Become A Contributor?
+One way - is to look on some opensource project you like, and try to understand it`s spirit  
 That is why it may be important to follow the repo you-want-to-contribute closely
 
 # Technologies
