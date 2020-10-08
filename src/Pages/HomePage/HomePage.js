@@ -41,8 +41,8 @@ export default function HomePage() {
           <Tab key={tabName}>{tabName}</Tab>
         ))}
 
-        {tabs.map(({ component: My }) => (
-          <TabPanel>
+        {tabs.map(({ component: My, tabName }) => (
+          <TabPanel key={`panel-${tabName}`}>
             <My selectedRepo={selectedRepo} />
           </TabPanel>
         ))}
