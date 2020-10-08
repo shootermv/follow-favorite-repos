@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import Paginator from './Paginator';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import Paginator from "./Paginator";
 
 const PaginatedTable = ({
   options: { data, numOfpageBtnsToDisplay = 5, pageSize = 10 },
@@ -42,11 +41,6 @@ const PaginatedTable = ({
       </div>
     </div>
   );
-};
-
-PaginatedTable.propTypes = {
-  options: PropTypes.object.isRequired,
-  children: PropTypes.array,
 };
 
 export default PaginatedTable;

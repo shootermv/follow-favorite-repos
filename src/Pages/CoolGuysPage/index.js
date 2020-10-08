@@ -1,1 +1,1 @@
-export { default } from './CoolGuysPage';
+export {default} from './CoolGuysPage';

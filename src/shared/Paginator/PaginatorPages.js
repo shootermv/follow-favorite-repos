@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const PaginatorPages = ({
   currentPage,
   lastPage,
   numOfpageBtndsToDisplay = 10,
-  onPageClick,
+  onPageClick
 }) => {
   const firstBtn =
     currentPage % numOfpageBtndsToDisplay
@@ -22,10 +21,10 @@ const PaginatorPages = ({
   }
   return (
     <span className="page-buttons-list">
-      {buttons.map((btn) => (
+      {buttons.map(btn => (
         <button
           key={btn}
-          className={`${currentPage === btn ? 'current' : ''}`}
+          className={`${currentPage === btn ? "current" : ""}`}
           onClick={() => onPageClick(btn)}
         >
           {btn}
@@ -33,13 +32,6 @@ const PaginatorPages = ({
       ))}
     </span>
   );
-};
-
-PaginatorPages.propTypes = {
-  currentPage: PropTypes.number,
-  lastPage: PropTypes.number,
-  onPageClick: PropTypes.func,
-  numOfpageBtndsToDisplay: PropTypes.number,
 };
 
 export default PaginatorPages;

@@ -1,14 +1,13 @@
-import React from 'react';
-import PaginatedTable from '../shared/Paginator';
-import Spinner from '../shared/Spinner';
-import useFetch from '../shared/Hooks';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import PaginatedTable from "../shared/Paginator";
+import Spinner from "../shared/Spinner";
+import useFetch from "../shared/Hooks";
+import { Link } from "react-router-dom";
 
 const Commits = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/commits?per_page=50`;
   const { response: commits, loading: waiting, error } = useFetch(url, {}, [
-    selectedRepo,
+    selectedRepo
   ]);
 
   return (
@@ -18,7 +17,7 @@ const Commits = ({ selectedRepo }) => {
         {({ data: commits }) => {
           if (error) {
             return <>Some error occurred</>;
-          }
+          }          
           if (waiting) {
             return <Spinner />;
           }
@@ -39,8 +38,8 @@ const Commits = ({ selectedRepo }) => {
                       author: { login },
                       commit: {
                         message,
-                        author: { name, email },
-                      },
+                        author: { name, email }
+                      }
                     }) => (
                       <tr key={sha}>
                         <td>{message.slice(0, 50)}</td>
@@ -57,10 +56,6 @@ const Commits = ({ selectedRepo }) => {
       </PaginatedTable>
     </div>
   );
-};
-
-Commits.propTypes = {
-  selectedRepo: PropTypes.object.isRequired,
 };
 
 export default Commits;

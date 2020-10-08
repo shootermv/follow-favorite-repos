@@ -1,13 +1,11 @@
-import React from 'react';
-import PaginatedTable from '../shared/Paginator';
-import Spinner from '../shared/Spinner';
-import useFetch from '../shared/Hooks';
-import PropTypes from 'prop-types';
-
+import React from "react";
+import PaginatedTable from "../shared/Paginator";
+import Spinner from "../shared/Spinner";
+import useFetch from "../shared/Hooks";
 const Pulls = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/pulls?per_page=50`;
   const { response: pulls, loading: waiting, error } = useFetch(url, {}, [
-    selectedRepo,
+    selectedRepo
   ]);
 
   return (
@@ -17,7 +15,7 @@ const Pulls = ({ selectedRepo }) => {
         {({ data: pulls }) => {
           if (error) {
             return <>Some error occurred</>;
-          }
+          }          
           if (waiting) {
             return <Spinner />;
           }
@@ -43,10 +41,6 @@ const Pulls = ({ selectedRepo }) => {
       </PaginatedTable>
     </div>
   );
-};
-
-Pulls.propTypes = {
-  selectedRepo: PropTypes.object.isRequired,
 };
 
 export default Pulls;
