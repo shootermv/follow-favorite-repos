@@ -8,7 +8,6 @@ function flat(RR) {
 }
 const Tabs = ({ children }) => {
   const [active, setActive] = useState(0);
-  console.log(`ffff:${flat(children)}`)
 
   const panelsWithProps = Children.map(
     flat(children).filter((comp) => {
