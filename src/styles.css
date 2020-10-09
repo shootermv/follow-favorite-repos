@@ -16,3 +16,11 @@ td,
 th {
   text-align: left;
 }
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  padding: 1.4em;
+}

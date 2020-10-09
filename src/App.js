@@ -13,6 +13,7 @@ export default function App() {
     <RepoContextProvider>
       <Router>
 	    <TopBar />
+        <div className="container">
         <Switch>
           <Route exact path="/">
             <HomePage />
@@ -24,6 +25,7 @@ export default function App() {
             <CoolGuysPage />
           </Route>
         </Switch>
+        </div>
       </Router>
     </RepoContextProvider>
   );
