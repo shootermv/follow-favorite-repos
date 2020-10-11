@@ -12,19 +12,19 @@ export default function App() {
   return (
     <RepoContextProvider>
       <Router>
-	    <TopBar />
+        <TopBar />
         <div className="container">
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route exact path="/author/:authorName/:email">
-            <AuthorPage />
-          </Route>
-          <Route exact path="/guys">
-            <CoolGuysPage />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route exact path="/author/:authorName/:email">
+              <AuthorPage />
+            </Route>
+            <Route exact path="/guys">
+              <CoolGuysPage />
+            </Route>
+          </Switch>
         </div>
       </Router>
     </RepoContextProvider>
