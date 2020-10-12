@@ -11,7 +11,6 @@
 }
 .paginator-wrap .paginator {
   align-self: start;
-  font-family: book;
   max-width: 450px;
   display: grid;
   grid-gap: 4px;
