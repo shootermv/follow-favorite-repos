@@ -1,0 +1,51 @@
+
+
+.paginator-wrap {
+  --main-btn-color:  #3e3e3e;
+  --main-btn-bgr-color: #ebebeb;
+  --current-btn-color: #fff;
+  --current-btn-bgr-color: #2bbfdf;
+  display: grid;
+  padding-right: 20px;
+  justify-items: center;
+}
+.paginator-wrap .paginator {
+  align-self: start;
+  font-family: book;
+  max-width: 450px;
+  display: grid;
+  grid-gap: 4px;
+  grid-auto-flow: column;
+}
+.paginator-wrap .paginator .page-buttons-list {
+  display: grid;
+  grid-gap: 4px;
+  grid-auto-flow: column;
+}
+.paginator-wrap .paginator .page-of-total {
+  display: grid;
+  align-items: center;
+}
+.paginator-wrap .paginator button {
+  font-weight: bold;
+  color: var(--main-btn-color);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  background: var(--main-btn-bgr-color);
+}
+.paginator-wrap .paginator button.current {
+  color: var(--current-btn-color);
+  background: var(--current-btn-bgr-color);
+}
+.paginator-wrap .paginator button[disabled] {
+  color: #c4c4c4;
+}
+
+@media screen and (max-width: 450px) {
+  .paginator-wrap .paginator .page-of-total {
+    display: none;
+  }
+}
