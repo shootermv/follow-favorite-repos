@@ -1,5 +1,5 @@
 import React from "react";
-import "./Paginator.scss";
+import "./Paginator.css";
 import PaginatorPages from "./PaginatorPages";
 
 const Paginator = ({
