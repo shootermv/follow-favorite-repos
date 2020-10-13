@@ -36,7 +36,7 @@ export default function AuthorPage() {
     let coolGuys = localStorage.getItem("coolGuys") ? JSON.parse(localStorage.getItem("coolGuys"))
       : [];
     setAlreadyInList(coolGuys.find(({ email: _email }) => email === _email))
-  }, [])
+  }, [email])
   const {
     currentRepo: selectedRepo
   } = useContext(RepoContext);

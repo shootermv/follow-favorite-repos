@@ -8,9 +8,7 @@ import './Commits.css';
 
 const Commits = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/commits?per_page=50`;
-  const { response: commits, loading: waiting, error } = useFetch(url, {}, [
-    selectedRepo
-  ]);
+  const { response: commits, loading: waiting, error } = useFetch(url);
 
   return (
     <div className="table-wrap">

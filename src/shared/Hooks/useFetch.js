@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const useFetch = (url, options, deps = []) => {
+const useFetch = (url) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ const useFetch = (url, options, deps = []) => {
     const doFetch = async () => {
       setLoading(true);
       try {
-        const res = await fetch(url, options);
+        const res = await fetch(url);
         const json = await res.json();
         if (!res.ok) {
           throw json.message;
@@ -30,7 +30,7 @@ const useFetch = (url, options, deps = []) => {
     return () => {
       abortController.abort();
     };
-  }, deps);
+  }, [url]);
   return { response, error, loading };
 };
 export default useFetch;
