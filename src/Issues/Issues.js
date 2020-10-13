@@ -5,9 +5,7 @@ import useFetch from "../shared/Hooks";
 
 const Issues = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/issues?per_page=50`;
-  const { response: issues, loading: waiting, error } = useFetch(url, {}, [
-    selectedRepo
-  ]);
+  const { response: issues, loading: waiting, error } = useFetch(url);
 
   return (
     <div>
