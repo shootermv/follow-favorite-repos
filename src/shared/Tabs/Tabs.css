@@ -1,6 +1,10 @@
+.tabs main {
+  display: flex;
+}
 .tabs header ul, .tabs main ul {
   display: flex;
-  list-style-type: none
+  flex: 1;
+  list-style-type: none;
 }
 .tabs header ul button:not(.active) {
    border: none;

@@ -4,6 +4,8 @@ import Spinner from "../shared/Spinner";
 import useFetch from "../shared/Hooks";
 import { Link } from "react-router-dom";
 
+import './Commits.css';
+
 const Commits = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/commits?per_page=50`;
   const { response: commits, loading: waiting, error } = useFetch(url, {}, [
@@ -11,7 +13,7 @@ const Commits = ({ selectedRepo }) => {
   ]);
 
   return (
-    <div>
+    <div className="table-wrap">
       <h2>commits: {commits?.length}</h2>
       <PaginatedTable options={{ data: commits || [], pageSize: 10 }}>
         {({ data: commits }) => {
@@ -22,12 +24,12 @@ const Commits = ({ selectedRepo }) => {
             return <Spinner />;
           }
           return (
-            <table>
+            <table className="table-table">
               <thead>
                 <tr>
                   <th>message</th>
                   <th>date</th>
-                  <th>author</th>
+                  <th className="table-author">author</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,9 +45,9 @@ const Commits = ({ selectedRepo }) => {
                       }
                     }) => (
                       <tr key={sha}>
-                        <td>{message}</td>
-                        <td>{new Date(date).toLocaleDateString("en-US", {hour: '2-digit', minute:'2-digit'})}</td>
-                        <td>
+                        <td><div className="table-text">{message}</div></td>
+                        <td className="table-date">{new Date(date).toLocaleDateString("en-US", {hour: '2-digit', minute:'2-digit'})}</td>
+                        <td className="table-author">
                           <Link to={`/author/${login}/${email}`}>{name}</Link>
                         </td>
                       </tr>
