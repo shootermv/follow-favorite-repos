@@ -26,6 +26,7 @@ const Commits = ({ selectedRepo }) => {
               <thead>
                 <tr>
                   <th>message</th>
+                  <th>date</th>
                   <th>author</th>
                 </tr>
               </thead>
@@ -38,11 +39,12 @@ const Commits = ({ selectedRepo }) => {
                       author: { login },
                       commit: {
                         message,
-                        author: { name, email }
+                        author: { name, email, date }
                       }
                     }) => (
                       <tr key={sha}>
-                        <td>{message.slice(0, 50)}</td>
+                        <td>{message}</td>
+                        <td>{new Date(date).toLocaleDateString("en-US", {hour: '2-digit', minute:'2-digit'})}</td>
                         <td>
                           <Link to={`/author/${login}/${email}`}>{name}</Link>
                         </td>
