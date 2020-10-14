@@ -12,7 +12,6 @@ const Commits = ({ selectedRepo }) => {
 
   return (
     <div className="table-wrap">
-      <h2>commits: {commits?.length}</h2>
       <PaginatedTable options={{ data: commits || [], pageSize: 10 }}>
         {({ data: commits }) => {
           if (error) {

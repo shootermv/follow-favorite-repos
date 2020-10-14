@@ -7,8 +7,7 @@ const Pulls = ({ selectedRepo }) => {
   const { response: pulls, loading: waiting, error } = useFetch(url);
 
   return (
-    <div>
-      <h2>Pull Requests: {pulls?.length}</h2>
+    <div className="table-wrap">
       <PaginatedTable options={{ data: pulls || [], pageSize: 10 }}>
         {({ data: pulls }) => {
           if (error) {
