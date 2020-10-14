@@ -8,8 +8,7 @@ const Issues = ({ selectedRepo }) => {
   const { response: issues, loading: waiting, error } = useFetch(url);
 
   return (
-    <div>
-      <h2>issues: {issues?.length}</h2>
+    <div className="table-wrap">
       <PaginatedTable options={{ data: issues || [], pageSize: 10 }}>
         {({ data: issues }) => {
           if (error) {
