@@ -1,7 +1,7 @@
 import React from "react";
 import PaginatedTable from "../shared/Paginator";
 import Spinner from "../shared/Spinner";
-import useFetch from "../shared/Hooks";
+import {useFetch} from "../shared/Hooks";
 
 const Issues = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/issues?per_page=50`;

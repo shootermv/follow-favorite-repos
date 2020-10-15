@@ -1,7 +1,7 @@
 import React from "react";
 import PaginatedTable from "../shared/Paginator";
 import Spinner from "../shared/Spinner";
-import useFetch from "../shared/Hooks";
+import {useFetch} from "../shared/Hooks";
 import { Link } from "react-router-dom";
 
 import './Commits.css';

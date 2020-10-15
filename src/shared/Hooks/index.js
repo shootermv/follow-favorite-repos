@@ -1,1 +1,1 @@
-export { default } from "./useFetch";
+export { default as useFetch } from './useFetch'

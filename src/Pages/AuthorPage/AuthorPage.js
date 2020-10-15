@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 //shared
-import useFetch from "../../shared/Hooks";
+import {useFetch} from "../../shared/Hooks";
 import Spinner from "../../shared/Spinner";
 import "./AuthorPage.css";
 
