@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 //shared
 import {useFetch} from "../../shared/Hooks";
 import Spinner from "../../shared/Spinner";
 import "./AuthorPage.css";
 
 import { RepoContext } from "../../Contexts/RepoContext";
+import Breadcrumb from '../../Breadcrumb'
 
 const savePerson = (user, selectedRepo, email, setAlreadyInList) => {
   const { id, login, avatar_url, name } = user;
@@ -51,10 +52,8 @@ export default function AuthorPage() {
             <>
               <div className="author-details-left">
                 <div>
-                  <b>
-                    <Link to={"/guys"}> Guys </Link>
-                  </b>
-              &#47; <b>{user.name}</b> <button disabled={alreadyInList} onClick={() => savePerson(user, selectedRepo, email, setAlreadyInList)}>Save This Guy</button>
+                  <Breadcrumb name={user.name} />
+                  <button disabled={alreadyInList} onClick={() => savePerson(user, selectedRepo, email, setAlreadyInList)}>Save This Guy</button>
                 </div>
                 <img alt="" src={user.avatar_url} />
               </div>
