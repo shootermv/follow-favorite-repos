@@ -28,7 +28,7 @@ const Paginator = ({
       </button>
       <PaginatorPages
         currentPage={currentPage}
-        numOfpageBtndsToDispay={numOfpageBtndsToDisplay}
+        numOfpageBtndsToDisplay={numOfpageBtndsToDisplay}
         lastPage={lastPage}
         onPageClick={(page) => onPageClick(page)}
       />
