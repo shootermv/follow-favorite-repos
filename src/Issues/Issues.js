@@ -27,7 +27,7 @@ const Issues = ({ selectedRepo }) => {
               <tbody>
                 {issues.map(({ number, title }) => (
                   <tr key={number}>
-                    <td>{title.slice(0, 50)}</td>
+                    <td><div className="table-text">{title}</div></td>
                   </tr>
                 ))}
               </tbody>

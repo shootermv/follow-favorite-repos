@@ -27,7 +27,7 @@ const Pulls = ({ selectedRepo }) => {
               <tbody>
                 {pulls.map(({ number, title }) => (
                   <tr key={number}>
-                    <td>{title.slice(0, 50)}</td>
+                    <td><div className="table-text">{title}</div></td>
                     <td>{number}</td>
                   </tr>
                 ))}
