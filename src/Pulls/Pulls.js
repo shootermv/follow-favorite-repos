@@ -2,6 +2,9 @@ import React from "react";
 import PaginatedTable from "../shared/Paginator";
 import Spinner from "../shared/Spinner";
 import {useFetch} from "../shared/Hooks";
+
+import '../shared/Table.css';
+
 const Pulls = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/pulls?per_page=50`;
   const { response: pulls, loading: waiting, error } = useFetch(url);
@@ -9,14 +12,10 @@ const Pulls = ({ selectedRepo }) => {
   return (
     <div className="table-wrap">
       <PaginatedTable options={{ data: pulls || [], pageSize: 10 }}>
-        {({ data: pulls }) => {
-          if (error) {
-            return <>Some error occurred</>;
-          }          
-          if (waiting) {
-            return <Spinner />;
-          }
-          return (
+        {({ data: pulls }) => <>
+         {error && <>Some error occurred</>}
+            {waiting && <Spinner />}
+         
             <table>
               <thead>
                 <tr>
@@ -34,7 +33,7 @@ const Pulls = ({ selectedRepo }) => {
               </tbody>
             </table>
           );
-        }}
+        </>}
       </PaginatedTable>
     </div>
   );

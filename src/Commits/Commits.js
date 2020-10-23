@@ -1,10 +1,10 @@
 import React from "react";
 import PaginatedTable from "../shared/Paginator";
 import Spinner from "../shared/Spinner";
-import {useFetch} from "../shared/Hooks";
+import { useFetch } from "../shared/Hooks";
 import { Link } from "react-router-dom";
 
-import './Commits.css';
+import "../shared/Table.css";
 
 const Commits = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/commits?per_page=50`;
@@ -13,14 +13,10 @@ const Commits = ({ selectedRepo }) => {
   return (
     <div className="table-wrap">
       <PaginatedTable options={{ data: commits || [], pageSize: 10 }}>
-        {({ data: commits }) => {
-          if (error) {
-            return <>Some error occurred</>;
-          }          
-          if (waiting) {
-            return <Spinner />;
-          }
-          return (
+        {({ data: commits }) => (
+          <>
+            {error && <>Some error occurred</>}
+            {waiting && <Spinner />}
             <table className="table-table">
               <thead>
                 <tr>
@@ -38,12 +34,19 @@ const Commits = ({ selectedRepo }) => {
                       author: { login },
                       commit: {
                         message,
-                        author: { name, email, date }
-                      }
+                        author: { name, email, date },
+                      },
                     }) => (
                       <tr key={sha}>
-                        <td><div className="table-text">{message}</div></td>
-                        <td className="table-date">{new Date(date).toLocaleDateString("en-US", {hour: '2-digit', minute:'2-digit'})}</td>
+                        <td>
+                          <div className="table-text">{message}</div>
+                        </td>
+                        <td className="table-date">
+                          {new Date(date).toLocaleDateString("en-US", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </td>
                         <td className="table-author">
                           <Link to={`/author/${login}/${email}`}>{name}</Link>
                         </td>
@@ -52,8 +55,8 @@ const Commits = ({ selectedRepo }) => {
                   )}
               </tbody>
             </table>
-          );
-        }}
+          </>
+        )}
       </PaginatedTable>
     </div>
   );
