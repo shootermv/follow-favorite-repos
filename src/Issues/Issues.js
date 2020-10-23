@@ -1,7 +1,9 @@
 import React from "react";
 import PaginatedTable from "../shared/Paginator";
 import Spinner from "../shared/Spinner";
-import {useFetch} from "../shared/Hooks";
+import { useFetch } from "../shared/Hooks";
+
+import "../shared/Table.css";
 
 const Issues = ({ selectedRepo }) => {
   const url = `https://api.github.com/repos/${selectedRepo.url}/issues?per_page=50`;
@@ -10,14 +12,10 @@ const Issues = ({ selectedRepo }) => {
   return (
     <div className="table-wrap">
       <PaginatedTable options={{ data: issues || [], pageSize: 10 }}>
-        {({ data: issues }) => {
-          if (error) {
-            return <>Some error occurred</>;
-          }          
-          if (waiting) {
-            return <Spinner />;
-          }
-          return (
+        {({ data: issues }) => (
+          <>
+            {error && <>Some error occurred</>}
+            {waiting && <Spinner />}
             <table>
               <thead>
                 <tr>
@@ -27,13 +25,15 @@ const Issues = ({ selectedRepo }) => {
               <tbody>
                 {issues.map(({ number, title }) => (
                   <tr key={number}>
-                    <td><div className="table-text">{title}</div></td>
+                    <td>
+                      <div className="table-text">{title}</div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          );
-        }}
+          </>
+        )}
       </PaginatedTable>
     </div>
   );
