@@ -16,22 +16,24 @@ const Issues = ({ selectedRepo }) => {
           <>
             {error && <>Some error occurred</>}
             {waiting && <Spinner />}
-            <table>
-              <thead>
-                <tr>
-                  <th>title</th>
-                </tr>
-              </thead>
-              <tbody>
-                {issues.map(({ number, title }) => (
-                  <tr key={number}>
-                    <td>
-                      <div className="table-text">{title}</div>
-                    </td>
+            {!!issues.length && (
+              <table>
+                <thead>
+                  <tr>
+                    <th>title</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {issues.map(({ number, title }) => (
+                    <tr key={number}>
+                      <td>
+                        <div className="table-text">{title}</div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </>
         )}
       </PaginatedTable>
