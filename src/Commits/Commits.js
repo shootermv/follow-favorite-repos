@@ -40,7 +40,7 @@ const Commits = ({ selectedRepo }) => {
                       }) => (
                         <tr key={sha}>
                           <td>
-                            <div className="table-text">{message}</div>
+                            <div className="ellipsys-text table-text">{message}</div>
                           </td>
                           <td className="table-date">
                             {new Date(date).toLocaleDateString("en-US", {

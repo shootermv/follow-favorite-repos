@@ -1,21 +1,33 @@
 .table-wrap {
-    flex: 1;
-    --author-width:  170px;
+  flex: 1;
+  --author-width: 170px;
+  --number-width: 70px;
 }
 .table-table {
-    width: 100%;
+  width: 100%;
+}
+.ellipsys-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .table-text {
-    width: calc(100vw - var(--author-width)*2 - 1.4em - 20px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  width: calc(100vw - var(--author-width) * 2 - 1.4em - 20px);
+}
+.table-text-withnumber {
+  width: calc(100vw - var(--number-width) - 1.4em - 20px);
+}
+.table-text-fullwidth {
+  width: calc(100vw - 1.4em - 20px);
+}
+.table-number {
+  width: var(--number-width);
 }
 
 .table-date {
-    width: var(--author-width);
+  width: var(--author-width);
 }
 .table-author {
-    width: var(--author-width);
-    text-align: right;
+  width: var(--author-width);
+  text-align: right;
 }

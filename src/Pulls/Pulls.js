@@ -28,7 +28,9 @@ const Pulls = ({ selectedRepo }) => {
                   {pulls.map(({ number, title }) => (
                     <tr key={number}>
                       <td>
-                        <div className="table-text">{title}</div>
+                        <div className="ellipsys-text table-text-withnumber">
+                          {title}
+                        </div>
                       </td>
                       <td>{number}</td>
                     </tr>
