@@ -17,16 +17,16 @@ const Pulls = ({ selectedRepo }) => {
             {error && <>Some error occurred</>}
             {waiting && <Spinner />}
             {!!pulls.length && (
-              <table>
+              <table data-test-id="table">
                 <thead>
-                  <tr>
+                  <tr data-test-id="table-head-row">
                     <th>title</th>
                     <th>number</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pulls.map(({ number, title }) => (
-                    <tr key={number}>
+                    <tr key={number} data-test-id="table-row">
                       <td>
                         <div className="ellipsys-text table-text-withnumber">
                           {title}
