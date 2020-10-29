@@ -11,32 +11,37 @@ const Issues = ({ selectedRepo }) => {
 
   return (
     <div className="table-wrap">
-      <PaginatedTable options={{ data: issues || [], pageSize: 10 }}>
-        {({ data: issues }) => (
-          <>
-            {error && <>Some error occurred</>}
-            {waiting && <Spinner />}
-            {!!issues.length && (
-              <table>
-                <thead>
-                  <tr>
-                    <th>title</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {issues.map(({ number, title }) => (
-                    <tr key={number}>
-                      <td>
-                        <div className="table-text">{title}</div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      {waiting ? <Spinner />
+        : error ? "Some error occurred"
+          : issues ? (
+            <PaginatedTable options={{ data: issues || [], pageSize: 10 }}>
+              {({ data: issues }) => (
+                <>
+                  {error && <>Some error occurred</>}
+                  {!!issues.length && (
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>title</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {issues.map(({ number, title }) => (
+                          <tr key={number}>
+                            <td>
+                              <div className="table-text">{title}</div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </>
+              )}
+            </PaginatedTable>
+          ) : (
+            ""
             )}
-          </>
-        )}
-      </PaginatedTable>
     </div>
   );
 };
