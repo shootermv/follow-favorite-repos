@@ -12,57 +12,63 @@ const Commits = ({ selectedRepo }) => {
 
   return (
     <div className="table-wrap">
-      <PaginatedTable options={{ data: commits || [], pageSize: 10 }}>
-        {({ data: commits }) => (
-          <>
-            {error && <>Some error occurred</>}
-            {waiting && <Spinner />}
-            {!!commits.length && (
-              <table className="table-table">
-                <thead>
-                  <tr>
-                    <th>message</th>
-                    <th>date</th>
-                    <th className="table-author">author</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {commits
-                    .filter(({ author }) => author)
-                    .map(
-                      ({
-                        sha,
-                        author: { login },
-                        commit: {
-                          message,
-                          author: { name, email, date },
-                        },
-                      }) => (
-                        <tr key={sha}>
-                          <td>
-                            <div className="ellipsys-text table-text">{message}</div>
-                          </td>
-                          <td className="table-date">
-                            {new Date(date).toLocaleDateString("en-US", {
-                              year: 'numeric',
-                              month: '2-digit',
-                              day: '2-digit',
-                              hour: '2-digit',
-                              minute: '2-digit' }
-                            )}
-                          </td>
-                          <td className="table-author">
-                            <Link to={`/author/${login}/${email}`}>{name}</Link>
-                          </td>
-                        </tr>
-                      )
-                    )}
-                </tbody>
-              </table>
+      {waiting ? <Spinner />
+        : error ? "Some error occurred"
+          : commits ? (
+            <PaginatedTable options={{ data: commits || [], pageSize: 10 }}>
+            {({ data: commits }) => (
+              <>
+                {error && <>Some error occurred</>}
+                {waiting && <Spinner />}
+                {!!commits.length && (
+                  <table className="table-table">
+                    <thead>
+                      <tr>
+                        <th>message</th>
+                        <th>date</th>
+                        <th className="table-author">author</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {commits
+                        .filter(({ author }) => author)
+                        .map(
+                          ({
+                            sha,
+                            author: { login },
+                            commit: {
+                              message,
+                              author: { name, email, date },
+                            },
+                          }) => (
+                            <tr key={sha}>
+                              <td>
+                                <div className="ellipsys-text table-text">{message}</div>
+                              </td>
+                              <td className="table-date">
+                                {new Date(date).toLocaleDateString("en-US", {
+                                  year: 'numeric',
+                                  month: '2-digit',
+                                  day: '2-digit',
+                                  hour: '2-digit',
+                                  minute: '2-digit' }
+                                )}
+                              </td>
+                              <td className="table-author">
+                                <Link to={`/author/${login}/${email}`}>{name}</Link>
+                              </td>
+                            </tr>
+                          )
+                        )}
+                    </tbody>
+                  </table>
+                )}
+              </>
             )}
-          </>
-        )}
-      </PaginatedTable>
+            </PaginatedTable>
+          ) : (
+            ""
+            )}
     </div>
   );
 };

@@ -11,36 +11,42 @@ const Pulls = ({ selectedRepo }) => {
 
   return (
     <div className="table-wrap">
-      <PaginatedTable options={{ data: pulls || [], pageSize: 10 }}>
-        {({ data: pulls }) => (
-          <>
-            {error && <>Some error occurred</>}
-            {waiting && <Spinner />}
-            {!!pulls.length && (
-              <table data-test-id="table">
-                <thead>
-                  <tr data-test-id="table-head-row">
-                    <th>title</th>
-                    <th>number</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pulls.map(({ number, title }) => (
-                    <tr key={number} data-test-id="table-row">
-                      <td>
-                        <div className="ellipsys-text table-text-withnumber">
-                          {title}
-                        </div>
-                      </td>
-                      <td>{number}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      { waiting ? <Spinner />
+        : error ? "Some error occurred"
+          : pulls ? (
+            <PaginatedTable options={{ data: pulls || [], pageSize: 10 }}>
+            {({ data: pulls }) => (
+              <>
+                {error && <>Some error occurred</>}
+                {waiting && <Spinner />}
+                {!!pulls.length && (
+                  <table data-test-id="table">
+                    <thead>
+                      <tr data-test-id="table-head-row">
+                        <th>title</th>
+                        <th>number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pulls.map(({ number, title }) => (
+                        <tr key={number} data-test-id="table-row">
+                          <td>
+                            <div className="ellipsys-text table-text-withnumber">
+                              {title}
+                            </div>
+                          </td>
+                          <td>{number}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </>
             )}
-          </>
-        )}
-      </PaginatedTable>
+          </PaginatedTable>
+          ) : (
+            ""
+          )}
     </div>
   );
 };
