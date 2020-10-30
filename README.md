@@ -17,8 +17,8 @@ One way - is to look on some opensource project you like, and try to understand 
 That is why it may be important to follow the repo you-want-to-contribute closely
 
 # Technologies
-This project built with [React](https://github.com/facebook/react) great library
-Also used [Jest](https://jestjs.io) library for running unit tests
+This project built with [React](https://github.com/facebook/react) great library  
+Also used [Jest](https://jestjs.io) library for running unit tests  
 Also used [Storybook](https://storybook.js.org/) library for running visual tests
 
 # How To Run
