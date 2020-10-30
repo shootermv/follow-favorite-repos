@@ -18,6 +18,13 @@ That is why it may be important to follow the repo you-want-to-contribute closel
 
 # Technologies
 This project built with [React](https://github.com/facebook/react) great library
+Also used [Jest](https://jestjs.io) library for running unit tests
+Also used [Storybook](https://storybook.js.org/) library for running visual tests
+
+# How To Run
+* clone project  `git clone https://github.com/shootermv/follow-favorite-repos`
+* install dependencies `npm i`
+* run `npm start`
 
 # Interesting Thing About Demo
 The demo is hosted with free online [codesandbox](https://codesandbox.io) editor  
