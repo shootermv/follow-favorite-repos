@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import TopBar from "./Layout/TopBar";
+import { TopBar, Footer } from "./Layout";
 /* pages */
 import HomePage from "./Pages/HomePage";
 import AuthorPage from "./Pages/AuthorPage";
@@ -26,6 +26,7 @@ export default function App() {
             </Route>
           </Switch>
         </div>
+        <Footer />
       </Router>
     </RepoContextProvider>
   );
