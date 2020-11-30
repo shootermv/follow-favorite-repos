@@ -21,6 +21,7 @@
     "@storybook/react": "^6.0.26",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
+    "cypress": "^6.0.0",
     "react-is": "^16.13.1",
     "start-server-and-test": "^1.11.5",
     "typescript": "3.8.3"
@@ -32,7 +33,9 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "cy": "node_modules/.bin/cypress open"
+    "cy": "node_modules/.bin/cypress open",
+    "cy:run": "node_modules/.bin/cypress run",
+    "cy:ci": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "browserslist": [
     ">0.2%",
