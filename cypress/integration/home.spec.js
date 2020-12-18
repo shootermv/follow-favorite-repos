@@ -14,7 +14,11 @@ context('Home Page', () => {
       cy.get('[data-test-id="tab-title"]').get('button').first()
       .should('have.class', 'active')
       cy.get('[data-test-id="tab-title"]').get('button').eq(1).should('not.have.class', 'active')
-
+    })
+    
+    it('commits table should have 10 rows', () => {
+      cy.get('table > tbody > tr')
+      .should('have.length', 10)
     })    
   })
   

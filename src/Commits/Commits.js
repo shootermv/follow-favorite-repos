@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "../shared/Table.css";
 
 const Commits = ({ selectedRepo }) => {
-  const url = `https://api.github.com/repos/${selectedRepo.url}/commits?per_page=50`;
+  const url = `${process.env.REACT_APP_SERVER_URL}repos/${selectedRepo.url}/commits?per_page=50`;
   const { response: commits, loading: waiting, error } = useFetch(url);
 
   return (
