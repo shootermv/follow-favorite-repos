@@ -6,7 +6,7 @@ import { useFetch } from "../shared/Hooks";
 import "../shared/Table.css";
 
 const Pulls = ({ selectedRepo }) => {
-  const url = `https://api.github.com/repos/${selectedRepo.url}/pulls?per_page=50`;
+  const url = `${process.env.REACT_APP_SERVER_URL}repos/${selectedRepo.url}/pulls?per_page=50`;
   const { response: pulls, loading: waiting, error } = useFetch(url);
 
   return (
